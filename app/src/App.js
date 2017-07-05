@@ -9,11 +9,18 @@ class App extends Component {
 
     this.state = {
       species: [
-        'Elephant', 
-        'Leopard', 
-        'Platypus', 
-        'Shark',
-        'Mongoose'
+        {
+          name: 'Elephant',
+          status: 'Hungry'
+        },
+        {
+          name: 'Mongoose',
+          status: 'Hungry'
+        },
+        {
+          name: 'Shark',
+          status: 'Hungry'
+        }
       ],
 
       newSpecies: ''
@@ -32,7 +39,11 @@ class App extends Component {
     }
 
   addSpecies() {
-    const newSpecies = this.state.newSpecies;
+
+    const newSpecies = {
+        name: this.state.newSpecies,
+        status: 'Hungry'
+    }
 
     this.setState({
       species: [...this.state.species, newSpecies]
@@ -41,8 +52,8 @@ class App extends Component {
 
   render() {
 
-    const speciesArray = this.state.species.map((name, i ) => {
-      return <Species key={i} name={name} />
+    const speciesArray = this.state.species.map((species, i ) => {
+      return <Species key={i} name={species.name} status={species.status}/>
     })
 
 

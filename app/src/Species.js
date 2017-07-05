@@ -10,6 +10,8 @@ render() {
     return (
         <div>
             <h4>{ this.props.name }</h4>
+            <p>{this.props.status}</p>
+            <button> Feed </button>
         </div>
     )
 }
