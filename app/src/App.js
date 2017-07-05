@@ -66,6 +66,12 @@ class App extends Component {
     })
   }
 
+  //   feedSpecies(name){
+  //   const {species} = this.state
+  //    species.map(e => { if(e.name === name) e.status = 'Happy' })
+  //   this.setState({species})
+  // }
+
   render() {
 
     const speciesArray = this.state.species.map((species, i ) => {
@@ -73,7 +79,7 @@ class App extends Component {
             key={i} 
             name={species.name} 
             status={species.status} 
-            action={this.feedSpecies}
+            action={this.feedSpecies} //action can be any word
             />
     })
 

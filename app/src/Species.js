@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-
+/*
 class Species extends Component {
 
 handleClick() {
-    this.props.action(this.props.name)
+    this.props.action(this.props.name) //invoking feedSpecies on app.js
 }
 
 
@@ -23,3 +23,26 @@ render() {
 }
 
 export default Species;
+
+*/
+
+
+
+
+// Functional Component Example: 
+
+export default function Species(props) {
+    function handleClick() {
+        props.action(props.name);
+    }
+
+
+return (
+        <div>
+            <h4>{ props.name }</h4>
+            <p>{ props.status}</p>
+            <button onClick={handleClick}> Feed </button>
+        </div>
+)
+
+}
