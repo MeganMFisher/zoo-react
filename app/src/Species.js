@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 
 class Species extends Component {
 
+handleClick() {
+    this.props.action(this.props.name)
+}
+
 
 render() {
  
@@ -11,7 +15,7 @@ render() {
         <div>
             <h4>{ this.props.name }</h4>
             <p>{this.props.status}</p>
-            <button> Feed </button>
+            <button onClick={this.handleClick.bind(this)}> Feed </button>
         </div>
     )
 }

@@ -28,6 +28,7 @@ class App extends Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.addSpecies = this.addSpecies.bind(this)
+    this.feedSpecies = this.feedSpecies.bind(this)
 
   }
 
@@ -50,10 +51,30 @@ class App extends Component {
     })
   }
 
+  feedSpecies(name) {
+
+    const species = this.state.species;
+
+    for(let i = 0; i < species.length; i++) {
+      if(species[i].name === name) {
+        species[i].status = 'Happy'
+      }
+    }
+
+    this.setState({
+      species: species
+    })
+  }
+
   render() {
 
     const speciesArray = this.state.species.map((species, i ) => {
-      return <Species key={i} name={species.name} status={species.status}/>
+      return <Species 
+            key={i} 
+            name={species.name} 
+            status={species.status} 
+            action={this.feedSpecies}
+            />
     })
 
 
