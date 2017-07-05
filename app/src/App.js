@@ -12,15 +12,40 @@ class App extends Component {
         'Elephant', 
         'Leopard', 
         'Platypus', 
-        'Shark'
-      ]
+        'Shark',
+        'Mongoose'
+      ],
+
+      newSpecies: ''
     }
+
+    this.handleChange = this.handleChange.bind(this)
+    this.addSpecies = this.addSpecies.bind(this)
 
   }
 
 
+  handleChange(event) {
+      this.setState({ 
+        newSpecies: event.target.value
+      })
+    }
+
+  addSpecies() {
+    const newSpecies = this.state.newSpecies;
+
+    this.setState({
+      species: [...this.state.species, newSpecies]
+    })
+  }
 
   render() {
+
+    const speciesArray = this.state.species.map((name, i ) => {
+      return <Species key={i} name={name} />
+    })
+
+
     return (
       <div className="App">
         <div className="App-header">
@@ -31,15 +56,13 @@ class App extends Component {
           All The Animals
         </p>
 
+        {/*<Species  name={this.state.species[0]}/> */}
 
-        {/*{ this.state.species }*/}
-
-        <Species  name={this.state.species[0]}/>
-        <Species  name={this.state.species[1]}/>
+        {speciesArray}
 
         <div>
-          <input />
-          <button> Add Species </button>
+          <input onChange={this.handleChange} value={this.state.newSpecies}/>
+          <button onClick={this.addSpecies}> Add Species </button>
         </div>
 
       </div>
