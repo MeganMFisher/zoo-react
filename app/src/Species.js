@@ -4,8 +4,13 @@ class Species extends Component {
 
 
 render() {
+ 
+//  console.log(this.props)
+
     return (
-        <h4>Elephant</h4>
+        <div>
+            <h4>{ this.props.name }</h4>
+        </div>
     )
 }
 
