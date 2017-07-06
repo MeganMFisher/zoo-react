@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { getAnimals } from './services/animals'
 import Species from './Species';
 import logo from './logo.svg';
 import './App.css';
+
 
 class App extends Component {
   constructor(props) {
@@ -43,7 +45,7 @@ class App extends Component {
 
     const newSpecies = {
         name: this.state.newSpecies,
-        status: 'Hungry'
+        status: 'famished'
     }
 
     this.setState({
@@ -71,6 +73,14 @@ class App extends Component {
   //    species.map(e => { if(e.name === name) e.status = 'Happy' })
   //   this.setState({species})
   // }
+
+  componentDidMount() {
+    getAnimals().then(response => {
+      this.setState({
+        species: response.data
+      })
+    })
+  }
 
   render() {
 
